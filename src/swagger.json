@@ -1,0 +1,292 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API de Alunos",
+      "version": "1.0.0",
+      "description": "Documentação da API de Alunos"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3333",
+        "description": "Servidor de desenvolvimento"
+      }
+    ],
+    "tags": [
+      {
+        "name": "Alunos",
+        "description": "Operações relacionadas a Alunos"
+      }
+    ],
+    "paths": {
+      "/alunos": {
+        "get": {
+          "summary": "Retorna todos os alunos",
+          "tags": ["Alunos"],
+          "responses": {
+            "200": {
+              "description": "Lista de alunos",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "aluno_name": {
+                          "type": "string"
+                        },
+                        "idade": {
+                          "type": "integer"
+                        },
+                        "nota_primeiro_semestre": {
+                          "type": "number"
+                        },
+                        "nota_segundo_semestre": {
+                          "type": "number"
+                        },
+                        "nome_professor": {
+                          "type": "string"
+                        },
+                        "numero_sala": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/alunos/{aluno_id}": {
+        "get": {
+          "summary": "Retorna um aluno pelo ID",
+          "tags": ["Alunos"],
+          "parameters": [
+            {
+              "name": "aluno_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID do aluno a ser retornado"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Dados do aluno",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "aluno_name": {
+                        "type": "string"
+                      },
+                      "idade": {
+                        "type": "integer"
+                      },
+                      "nota_primeiro_semestre": {
+                        "type": "number"
+                      },
+                      "nota_segundo_semestre": {
+                        "type": "number"
+                      },
+                      "nome_professor": {
+                        "type": "string"
+                      },
+                      "numero_sala": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Aluno não encontrado"
+            }
+          }
+        }
+      },
+      "/aluno": {
+        "post": {
+          "summary": "Cria um novo aluno",
+          "tags": ["Alunos"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "aluno_name": {
+                      "type": "string"
+                    },
+                    "idade": {
+                      "type": "integer"
+                    },
+                    "nota_primeiro_semestre": {
+                      "type": "number"
+                    },
+                    "nota_segundo_semestre": {
+                      "type": "number"
+                    },
+                    "nome_professor": {
+                      "type": "string"
+                    },
+                    "numero_sala": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Aluno criado com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "aluno_name": {
+                        "type": "string"
+                      },
+                      "idade": {
+                        "type": "integer"
+                      },
+                      "nota_primeiro_semestre": {
+                        "type": "number"
+                      },
+                      "nota_segundo_semestre": {
+                        "type": "number"
+                      },
+                      "nome_professor": {
+                        "type": "string"
+                      },
+                      "numero_sala": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Erro ao criar novo aluno"
+            }
+          }
+        }
+      },
+      "/aluno/{id}": {
+        "patch": {
+          "summary": "Atualiza um aluno pelo ID",
+          "tags": ["Alunos"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID do aluno a ser atualizado"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "aluno_name": {
+                      "type": "string"
+                    },
+                    "idade": {
+                      "type": "integer"
+                    },
+                    "nota_primeiro_semestre": {
+                      "type": "number"
+                    },
+                    "nota_segundo_semestre": {
+                      "type": "number"
+                    },
+                    "nome_professor": {
+                      "type": "string"
+                    },
+                    "numero_sala": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Aluno atualizado com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "aluno_name": {
+                        "type": "string"
+                      },
+                      "idade": {
+                        "type": "integer"
+                      },
+                      "nota_primeiro_semestre": {
+                        "type": "number"
+                      },
+                      "nota_segundo_semestre": {
+                        "type": "number"
+                      },
+                      "nome_professor": {
+                        "type": "string"
+                      },
+                      "numero_sala": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Apaga um aluno pelo ID",
+          "tags": ["Alunos"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID do aluno a ser apagado"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Aluno apagado com sucesso"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
+      }
+    }
+  }
+  

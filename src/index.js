@@ -1,8 +1,12 @@
 const express = require('express');
+const cors = require('cors')
 const { Pool } = require('pg');
+// import swaggerJSDoc from 'swagger-jsdoc';
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger.json');
 require('dotenv').config();
 
-const PORT = 3333;
+const PORT = process.env.PORT || 3333;
 
 const pool = new Pool({
     connectionString: process.env.POSTGRES_URL
@@ -11,6 +15,24 @@ const pool = new Pool({
 const app = express();
 
 app.use(express.json());
+app.use(cors)
+
+// // Configuração do Swagger
+// const swaggerOptions = {
+//     definition: {
+//         openapi: '3.0.0',
+//         info: {
+//             title: 'API de Alunos',
+//             version: '1.0.0',
+//             description: 'Documentação da API de Alunos',
+//         },
+//     },
+//     apis: ['./index.js'], // Caminho para o arquivo que contém suas rotas
+// };
+
+// const swaggerSpec = swaggerJSDoc(swaggerOptions);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.get('/', (req, res) => { console.log('Olá mundo') });
 
