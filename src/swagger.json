@@ -6,6 +6,10 @@
       "description": "Documentação da API de Alunos"
     },
     "servers": [
+        {
+        "url": "https://api-alunosdesafiogeneration.onrender.com",
+        "description": "Render Server"
+        },
       {
         "url": "http://localhost:3333",
         "description": "Servidor de desenvolvimento"
