@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors')
+// const cors = require('cors')
 const { Pool } = require('pg');
 // import swaggerJSDoc from 'swagger-jsdoc';
 const swaggerUi = require('swagger-ui-express');
@@ -15,7 +15,7 @@ const pool = new Pool({
 const app = express();
 
 app.use(express.json());
-app.use(cors)
+// app.use(cors)
 
 // // Configuração do Swagger
 // const swaggerOptions = {
